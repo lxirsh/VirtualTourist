@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Virtual Tourist-->
@@ -16,9 +17,48 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EUo-bk-xj1">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="23Y-6D-daw"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EUo-bk-xj1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9Y1-2z-jhg"/>
+                            <constraint firstItem="EUo-bk-xj1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="AbX-uH-u4R"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EUo-bk-xj1" secondAttribute="bottom" id="XcC-S6-10o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EUo-bk-xj1" secondAttribute="trailing" constant="-20" id="fe3-l9-13k"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="EUo-bk-xj1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9Y1-2z-jhg"/>
+                                <exclude reference="AbX-uH-u4R"/>
+                                <exclude reference="fe3-l9-13k"/>
+                                <exclude reference="XcC-S6-10o"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="EUo-bk-xj1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="9Y1-2z-jhg"/>
+                                <include reference="AbX-uH-u4R"/>
+                                <include reference="fe3-l9-13k"/>
+                                <include reference="XcC-S6-10o"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="ia3-Lc-48g"/>
+                    <connections>
+                        <outlet property="mapView" destination="EUo-bk-xj1" id="hVH-eg-osh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
