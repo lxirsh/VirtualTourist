@@ -99,10 +99,10 @@
 		B4F525361D2961F80053C60E /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				B4F525681D296C130053C60E /* Models */,
 				B4F525371D2961F80053C60E /* AppDelegate.swift */,
 				B4F525391D2961F90053C60E /* MapViewController.swift */,
 				B4F5253B1D2961F90053C60E /* Main.storyboard */,
-				B4F525651D2966DA0053C60E /* Model.xcdatamodeld */,
 				B4F5253E1D2961F90053C60E /* Assets.xcassets */,
 				B4F525401D2961F90053C60E /* LaunchScreen.storyboard */,
 				B4F525431D2961F90053C60E /* Info.plist */,
@@ -126,6 +126,14 @@
 				B4F525591D2961F90053C60E /* Info.plist */,
 			);
 			path = VirtualTouristUITests;
+			sourceTree = "<group>";
+		};
+		B4F525681D296C130053C60E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4F525651D2966DA0053C60E /* Model.xcdatamodeld */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
