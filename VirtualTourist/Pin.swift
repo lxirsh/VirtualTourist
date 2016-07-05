@@ -16,7 +16,7 @@ class Pin: NSManagedObject {
         
         if let ent = NSEntityDescription.entityForName("Pin", inManagedObjectContext: context) {
             self.init(entity: ent, insertIntoManagedObjectContext: context)
-            self.lattitude = lattitude
+            self.latitude = lattitude
             self.longitude = longitude
         } else {
             fatalError("Unable to find Entity name")
