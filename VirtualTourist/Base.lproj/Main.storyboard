@@ -56,7 +56,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Virtual Tourist" id="ia3-Lc-48g"/>
+                    <navigationItem key="navigationItem" title="Virtual Tourist" id="ia3-Lc-48g">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="sqb-IW-w3U"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="EUo-bk-xj1" id="hVH-eg-osh"/>
                     </connections>
