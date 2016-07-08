@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -24,15 +25,27 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         gestureRecognizer.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(gestureRecognizer)
         
+//        // Get the stack
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let stack = delegate.stack
+//
+        // Create a fetchrequest
+        let fr = NSFetchRequest(entityName: "Pin")
+        fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
+                              NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        
     }
 
     // Add a pin annotaion where the user touches the mao.
     func addAnnotation(gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
-            var touchPoint = gestureRecognizer.locationInView(mapView)
-            var newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = newCoordinates
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let touchPoint = gestureRecognizer.locationInView(mapView)
+            let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            let annotation = Pin(lattitude: newCoordinates.latitude, longitude: newCoordinates.longitude, context: appDelegate.stack.context)
             mapView.addAnnotation(annotation)
         }
     }
