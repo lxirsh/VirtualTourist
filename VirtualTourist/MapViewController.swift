@@ -26,18 +26,9 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
         sharedContext = appDelegate.managedObjectContext
         
         // Add a long touch gesture recognizer for the user to place pins on the map.
-        var gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "addAnnotation:")
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.addAnnotation(_:)))
         gestureRecognizer.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(gestureRecognizer)
-        
-//        // Get the stack
-//        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let stack = delegate.stack
-//
-        // Create a fetchrequest
-//        let fr = NSFetchRequest(entityName: "Pin")
-//        fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
-//                              NSSortDescriptor(key: "creationDate", ascending: false)]
         
         if let savedAnnotations = fetchAnnotations() {
             mapView.addAnnotations(savedAnnotations)
@@ -57,9 +48,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func fetchAnnotations() -> [Pin]? {
-//        let error: NSErrorPointer = nil
         let fetchRequest = NSFetchRequest(entityName: "Pin")
-//        let results = sharedContext.executeFetchRequest(fetchRequest)
         do {
             let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as! [Pin]
             return fetchResults
