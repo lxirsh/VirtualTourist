@@ -15,7 +15,6 @@
 		B4F5254D1D2961F90053C60E /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5254C1D2961F90053C60E /* VirtualTouristTests.swift */; };
 		B4F525581D2961F90053C60E /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F525571D2961F90053C60E /* VirtualTouristUITests.swift */; };
 		B4F525671D2966DA0053C60E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4F525651D2966DA0053C60E /* Model.xcdatamodeld */; };
-		B4F5256A1D296C600053C60E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F525691D296C600053C60E /* CoreDataStack.swift */; };
 		B4F5256F1D2971420053C60E /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5256B1D2971420053C60E /* Photo+CoreDataProperties.swift */; };
 		B4F525701D2971420053C60E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5256C1D2971420053C60E /* Photo.swift */; };
 		B4F525711D2971420053C60E /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5256D1D2971420053C60E /* Pin+CoreDataProperties.swift */; };
@@ -54,7 +53,6 @@
 		B4F525571D2961F90053C60E /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		B4F525591D2961F90053C60E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4F525661D2966DA0053C60E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B4F525691D296C600053C60E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B4F5256B1D2971420053C60E /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B4F5256C1D2971420053C60E /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B4F5256D1D2971420053C60E /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				B4F5256D1D2971420053C60E /* Pin+CoreDataProperties.swift */,
 				B4F5256E1D2971420053C60E /* Pin.swift */,
 				B4F525651D2966DA0053C60E /* Model.xcdatamodeld */,
-				B4F525691D296C600053C60E /* CoreDataStack.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 				B4F525711D2971420053C60E /* Pin+CoreDataProperties.swift in Sources */,
 				B4F525671D2966DA0053C60E /* Model.xcdatamodeld in Sources */,
 				B4F5256F1D2971420053C60E /* Photo+CoreDataProperties.swift in Sources */,
-				B4F5256A1D296C600053C60E /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
