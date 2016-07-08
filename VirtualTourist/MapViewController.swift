@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController, UIGestureRecognizerDelegate {
+class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapViewDelegate {
     
     var pin: Pin?
     var appDelegate: AppDelegate!
@@ -22,6 +22,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         sharedContext = appDelegate.managedObjectContext
         
@@ -56,6 +57,18 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
             print("Fetch failed: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    // MARK: Map view delegates
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        annotationView.canShowCallout = false
+        
+        return annotationView
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        print("pin selected")
     }
     
 }
