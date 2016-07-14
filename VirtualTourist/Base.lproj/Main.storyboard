@@ -155,6 +155,9 @@
                                         <include reference="83x-ZI-zJg"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="csE-Kp-aJM" id="Lap-3B-nBi"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,6 +203,7 @@
                     </view>
                     <connections>
                         <outlet property="flowLayout" destination="tpT-GU-E61" id="c1v-K4-0hd"/>
+                        <outlet property="mapView" destination="hmM-To-uxs" id="9vD-Gw-ieP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4m-xz-lb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
