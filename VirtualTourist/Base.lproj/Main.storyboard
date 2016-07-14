@@ -159,6 +159,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="flowLayout" destination="tpT-GU-E61" id="c1v-K4-0hd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4m-xz-lb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
