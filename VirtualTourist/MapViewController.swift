@@ -68,6 +68,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        
+        self.performSegueWithIdentifier("showImages", sender: self)
         print("pin selected")
     }
     

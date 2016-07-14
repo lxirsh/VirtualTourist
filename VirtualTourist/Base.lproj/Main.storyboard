@@ -61,39 +61,23 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="EUo-bk-xj1" id="hVH-eg-osh"/>
+                        <segue destination="csE-Kp-aJM" kind="show" identifier="showImages" id="7au-Sn-Qt7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1617" y="442"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Wc8-9W-MlM">
-            <objects>
-                <viewController id="m8v-hP-fgW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xPx-A4-LyG"/>
-                        <viewControllerLayoutGuide type="bottom" id="wMn-gz-OTA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GOC-gt-rZz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8j-bw-9tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2344.5" y="442"/>
-        </scene>
-        <!--View Controller-->
+        <!--Images View Controller-->
         <scene sceneID="J3Q-Bd-z41">
             <objects>
-                <viewController id="csE-Kp-aJM" sceneMemberID="viewController">
+                <viewController id="csE-Kp-aJM" customClass="VTImagesViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jjJ-B5-vam"/>
                         <viewControllerLayoutGuide type="bottom" id="phH-3l-Gy6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gJO-vX-ogQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J6C-6V-uPK">
@@ -111,8 +95,32 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap7-w2-Bsx">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="4" y="8" width="42" height="34"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="Ap7-w2-Bsx"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="Ap7-w2-Bsx"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="myLabel" destination="Ap7-w2-Bsx" id="GOX-CB-qac"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -154,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4m-xz-lb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976" y="442"/>
+            <point key="canvasLocation" x="2403" y="442"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2I8-7T-sSo">
