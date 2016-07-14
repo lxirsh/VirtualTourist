@@ -19,7 +19,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configure the layout
+        // Configure the layout and set three images per row for portrait and five for landscape
         let space: CGFloat = 1.5
         let dimension = self.view.frame.width <= self.view.frame.height ? (self.view.frame.width - (2 * space)) / 3.0 : (self.view.frame.width - (2 * space)) / 5.0
         
