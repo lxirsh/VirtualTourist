@@ -76,6 +76,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wMn-gz-OTA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GOC-gt-rZz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -83,6 +84,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8j-bw-9tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2344.5" y="442"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="J3Q-Bd-z41">
+            <objects>
+                <viewController id="csE-Kp-aJM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jjJ-B5-vam"/>
+                        <viewControllerLayoutGuide type="bottom" id="phH-3l-Gy6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gJO-vX-ogQ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="J6C-6V-uPK">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tpT-GU-E61">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Y48-EX-j7P" customClass="VTCollectionViewCell" customModule="VirtualTourist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="csE-Kp-aJM" id="W0U-fs-09I"/>
+                                    <outlet property="delegate" destination="csE-Kp-aJM" id="zgi-WJ-8tx"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J6C-6V-uPK" firstAttribute="leading" secondItem="gJO-vX-ogQ" secondAttribute="leading" id="C57-kD-IQa"/>
+                            <constraint firstItem="J6C-6V-uPK" firstAttribute="top" secondItem="jjJ-B5-vam" secondAttribute="bottom" constant="138" id="jyz-Lm-bDN"/>
+                            <constraint firstAttribute="trailing" secondItem="J6C-6V-uPK" secondAttribute="trailing" id="lH3-Et-wwF"/>
+                            <constraint firstItem="J6C-6V-uPK" firstAttribute="bottom" secondItem="phH-3l-Gy6" secondAttribute="top" id="wz6-Nc-QdR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="J6C-6V-uPK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="C57-kD-IQa"/>
+                                <exclude reference="jyz-Lm-bDN"/>
+                                <exclude reference="lH3-Et-wwF"/>
+                                <exclude reference="wz6-Nc-QdR"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="J6C-6V-uPK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="C57-kD-IQa"/>
+                                <include reference="jyz-Lm-bDN"/>
+                                <include reference="lH3-Et-wwF"/>
+                                <include reference="wz6-Nc-QdR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r4m-xz-lb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2976" y="442"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2I8-7T-sSo">

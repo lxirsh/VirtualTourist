@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4899BD41D374B5800F884CC /* VTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4899BD31D374B5800F884CC /* VTCollectionViewCell.swift */; };
+		B4899BD61D374B7200F884CC /* VTCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4899BD51D374B7200F884CC /* VTCollectionViewController.swift */; };
 		B4F525381D2961F80053C60E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F525371D2961F80053C60E /* AppDelegate.swift */; };
 		B4F5253A1D2961F90053C60E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F525391D2961F90053C60E /* MapViewController.swift */; };
 		B4F5253D1D2961F90053C60E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4F5253B1D2961F90053C60E /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4899BD31D374B5800F884CC /* VTCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4899BD51D374B7200F884CC /* VTCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTCollectionViewController.swift; sourceTree = "<group>"; };
 		B4F525341D2961F80053C60E /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4F525371D2961F80053C60E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4F525391D2961F90053C60E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				B4F525391D2961F90053C60E /* MapViewController.swift */,
+				B4899BD31D374B5800F884CC /* VTCollectionViewCell.swift */,
+				B4899BD51D374B7200F884CC /* VTCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -291,11 +297,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4F525701D2971420053C60E /* Photo.swift in Sources */,
+				B4899BD61D374B7200F884CC /* VTCollectionViewController.swift in Sources */,
 				B4F5253A1D2961F90053C60E /* MapViewController.swift in Sources */,
 				B4F525381D2961F80053C60E /* AppDelegate.swift in Sources */,
 				B4F525721D2971420053C60E /* Pin.swift in Sources */,
 				B4F525711D2971420053C60E /* Pin+CoreDataProperties.swift in Sources */,
 				B4F525671D2966DA0053C60E /* Model.xcdatamodeld in Sources */,
+				B4899BD41D374B5800F884CC /* VTCollectionViewCell.swift in Sources */,
 				B4F5256F1D2971420053C60E /* Photo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +529,7 @@
 				B4F5255E1D2961F90053C60E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4F5255F1D2961F90053C60E /* Build configuration list for PBXNativeTarget "VirtualTouristTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +538,7 @@
 				B4F525611D2961F90053C60E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4F525621D2961F90053C60E /* Build configuration list for PBXNativeTarget "VirtualTouristUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +547,7 @@
 				B4F525641D2961F90053C60E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
