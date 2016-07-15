@@ -14,6 +14,10 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var mapView: MKMapView!
     
+    // Properties
+    var latitude: Double!
+    var longitude: Double!
+    
     let reuseIdentifier = "cell"
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
 
@@ -28,6 +32,9 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        
+        print(latitude)
+        print(longitude)
     }
 
     // MARK: - UICollectionViewDataSource protocol
@@ -52,6 +59,14 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         print("You selected cell #\(indexPath.item)!")
     }
     
+    // MARK: - Map View
+    func showLocation() {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let regionRadius: CLLocationDistance = 1000
+        
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
 
     /*
     // MARK: - Navigation

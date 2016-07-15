@@ -176,13 +176,13 @@
                                 <exclude reference="hmM-To-uxs"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7Ca-ls-mUa"/>
+                                <exclude reference="y8I-Ba-pxY"/>
                                 <exclude reference="6x9-yV-fBI"/>
                                 <exclude reference="BvG-dL-52P"/>
                                 <exclude reference="IPb-qj-KVP"/>
                                 <exclude reference="PgW-5m-VtN"/>
                                 <exclude reference="nSh-mq-JjW"/>
-                                <exclude reference="7Ca-ls-mUa"/>
-                                <exclude reference="y8I-Ba-pxY"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -191,13 +191,13 @@
                                 <include reference="hmM-To-uxs"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7Ca-ls-mUa"/>
+                                <include reference="y8I-Ba-pxY"/>
                                 <include reference="6x9-yV-fBI"/>
                                 <include reference="BvG-dL-52P"/>
                                 <include reference="IPb-qj-KVP"/>
                                 <include reference="PgW-5m-VtN"/>
                                 <include reference="nSh-mq-JjW"/>
-                                <include reference="7Ca-ls-mUa"/>
-                                <include reference="y8I-Ba-pxY"/>
                             </mask>
                         </variation>
                     </view>

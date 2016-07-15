@@ -15,6 +15,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     var pin: Pin?
     var appDelegate: AppDelegate!
     var sharedContext: NSManagedObjectContext!
+    var destinationLatitude: Double?
+    var destinationLongitude: Double?
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -69,8 +71,21 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         
+        let pin = view.annotation
+        destinationLatitude = pin?.coordinate.latitude
+        destinationLongitude = pin?.coordinate.longitude
         self.performSegueWithIdentifier("showImages", sender: self)
         print("pin selected")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showImages" {
+            if let destination = segue.destinationViewController as? VTImagesViewController {
+                destination.latitude = destinationLatitude
+                destination.longitude = destinationLongitude
+            }
+            
+        }
     }
     
 }
