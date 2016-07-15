@@ -35,6 +35,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         print(latitude)
         print(longitude)
+        showLocation()
     }
 
     // MARK: - UICollectionViewDataSource protocol
@@ -60,9 +61,11 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     // MARK: - Map View
+    
+    // Zoom in on the selcted region
     func showLocation() {
         let location = CLLocation(latitude: latitude, longitude: longitude)
-        let regionRadius: CLLocationDistance = 1000
+        let regionRadius: CLLocationDistance = 10000
         
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
