@@ -74,9 +74,15 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         let pin = view.annotation
         destinationLatitude = pin?.coordinate.latitude
         destinationLongitude = pin?.coordinate.longitude
+        
+        VTClient.sharedInstance().pinLatitude = destinationLatitude
+        VTClient.sharedInstance().pinLongitude = destinationLongitude
+        
         self.performSegueWithIdentifier("showImages", sender: self)
-        print("pin selected")
+        
     }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showImages" {

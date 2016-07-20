@@ -33,9 +33,23 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
         
-        print(latitude)
-        print(longitude)
         showLocation()
+        showPhotos()
+    }
+    
+    func showPhotos() {
+        
+        VTClient.sharedInstance().getPhotosByLocation { (success, errorString) in
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                if success {
+                    print("success")
+                } else {
+                    print(errorString)
+                }
+            })
+            
+        }
     }
 
     // MARK: - UICollectionViewDataSource protocol
