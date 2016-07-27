@@ -30,6 +30,8 @@ class VTClient: NSObject {
         
         var parameters = parameters
         
+        print(parameters)
+        
         // Build the URL and configure the request
         let request = NSMutableURLRequest(URL: urlFromParameters(parameters))
         
@@ -41,7 +43,6 @@ class VTClient: NSObject {
                 completionHandlerForGet(result: nil, error: NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
             }
             
-            // GUARD: Was there an error?
             guard (error == nil) else {
                 sendError("There was an error with your request: \(error)")
                 return

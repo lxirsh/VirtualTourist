@@ -39,7 +39,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func showPhotos() {
         
-        VTClient.sharedInstance().getPhotosByLocation { (success, errorString) in
+        VTClient.sharedInstance().getPhotos { (success, errorString) in
             
             dispatch_async(dispatch_get_main_queue(), { 
                 if success {
