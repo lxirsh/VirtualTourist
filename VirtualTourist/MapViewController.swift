@@ -47,6 +47,11 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             let annotation = Pin(lattitude: newCoordinates.latitude, longitude: newCoordinates.longitude, context: appDelegate.managedObjectContext)
             mapView.addAnnotation(annotation)
             appDelegate.saveContext()
+            
+            // Set the coordinates for the client. Needed in order to get photos
+            VTClient.sharedInstance().pinLatitude = newCoordinates.latitude
+            VTClient.sharedInstance().pinLongitude = newCoordinates.longitude
+            fetchPhotos(annotation)
         }
     }
     
@@ -59,6 +64,27 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             print("Fetch failed: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    func fetchPhotos(pin: Pin) {
+        
+        var numberOfPhotosToFetch = 21
+        
+        repeat {
+            
+            VTClient.sharedInstance().getPhotos { (imageData, success, error) in
+                if success {
+                    let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
+                    photo.pin = pin
+                    self.appDelegate.saveContext()
+                    print(photo)
+                }
+            }
+            
+            numberOfPhotosToFetch -= 1
+        } while numberOfPhotosToFetch > 0
+        
+
     }
     
     // MARK: Map view delegates

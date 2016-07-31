@@ -104,6 +104,18 @@
 			name = Client;
 			sourceTree = "<group>";
 		};
+		B42E1CBB1D4DD41C0083CA5E /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				B4F5256B1D2971420053C60E /* Photo+CoreDataProperties.swift */,
+				B4F5256C1D2971420053C60E /* Photo.swift */,
+				B4F5256D1D2971420053C60E /* Pin+CoreDataProperties.swift */,
+				B4F5256E1D2971420053C60E /* Pin.swift */,
+				B4F525651D2966DA0053C60E /* Model.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		B4F5252B1D2961F80053C60E = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B405BACF1D3D0F59000FC549 /* Client */,
-				B4F5256B1D2971420053C60E /* Photo+CoreDataProperties.swift */,
-				B4F5256C1D2971420053C60E /* Photo.swift */,
-				B4F5256D1D2971420053C60E /* Pin+CoreDataProperties.swift */,
-				B4F5256E1D2971420053C60E /* Pin.swift */,
-				B4F525651D2966DA0053C60E /* Model.xcdatamodeld */,
+				B42E1CBB1D4DD41C0083CA5E /* Core Data */,
 			);
 			name = Models;
 			sourceTree = "<group>";

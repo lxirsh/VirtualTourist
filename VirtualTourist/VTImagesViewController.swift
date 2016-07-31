@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
     
@@ -15,6 +16,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var mapView: MKMapView!
     
     // Properties
+    var appDelegate: AppDelegate!
+    var sharedContext: NSManagedObjectContext!
     var latitude: Double!
     var longitude: Double!
     
@@ -24,6 +27,9 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        sharedContext = appDelegate.managedObjectContext
         
         // Configure the layout and set three images per row for portrait and five for landscape
         let space: CGFloat = 1.5
@@ -39,7 +45,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func showPhotos() {
         
-        VTClient.sharedInstance().getPhotos { (success, errorString) in
+        VTClient.sharedInstance().getPhotos { (imageData, success, errorString) in
             
             dispatch_async(dispatch_get_main_queue(), { 
                 if success {
