@@ -74,6 +74,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             
             VTClient.sharedInstance().getPhotos { (imageData, success, error) in
                 if success {
+                    // TODO? change context?
                     let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
                     photo.pin = pin
                     self.appDelegate.saveContext()

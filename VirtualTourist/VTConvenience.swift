@@ -94,6 +94,7 @@ extension VTClient {
         
     }
     
+    // TODO: check to see if there is a unique id to prevent duplictaes
     func getPhotosFromFlickrByPageNumber(parameters: [String: AnyObject], pageNumber: Int, completionHandlerForGetPhotosFromFlickrByPageNumber: (imageData: NSData?, success: Bool, errorString: String?) -> Void) {
         
         var methodParameters = parameters
