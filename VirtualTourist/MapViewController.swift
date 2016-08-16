@@ -38,7 +38,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         }
     }
 
-    // Add a pin annotaion where the user touches the mao.
+    // Add a pin annotaion where the user touches the map and, save it to core data and call a method to get photos based on the location.
     func addAnnotation(gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
