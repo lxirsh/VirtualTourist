@@ -20,6 +20,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     var sharedContext: NSManagedObjectContext!
     var latitude: Double!
     var longitude: Double!
+    var coreDataPin: Pin!
     
     var selectedIndexes: [NSIndexPath]!
     var insertedIndexPaths: [NSIndexPath]!
@@ -61,19 +62,26 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         showPhotos()
     }
     
+
+    
     func showPhotos() {
         
-        VTClient.sharedInstance().getPhotos { (imageData, success, errorString) in
-            
-            dispatch_async(dispatch_get_main_queue(), { 
-                if success {
-                    print("success")
-                } else {
-                    print(errorString)
-                }
-            })
-            
+       let pin = coreDataPin
+        for photo in pin.photos! {
+            print(photo)
         }
+//        
+//        VTClient.sharedInstance().getPhotos { (imageData, success, errorString) in
+//            
+//            dispatch_async(dispatch_get_main_queue(), { 
+//                if success {
+//                    print("success")
+//                } else {
+//                    print(errorString)
+//                }
+//            })
+//            
+//        }
     }
     
     // MARK: - UICollectionView

@@ -17,6 +17,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     var sharedContext: NSManagedObjectContext!
     var destinationLatitude: Double?
     var destinationLongitude: Double?
+    var destinationCoreDataPin: Pin?
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -59,11 +60,27 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         let fetchRequest = NSFetchRequest(entityName: "Pin")
         do {
             let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as! [Pin]
+            print("Fetched results for 'Pin': \(fetchResults)")
             return fetchResults
         } catch let error as NSError {
             print("Fetch failed: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    // Get the Pin associated with a given latitude and longitude
+    func getCoreDataPin(latitude: Double, longitude: Double) -> Pin? {
+        
+        if let savedPins = fetchAnnotations() {
+            
+            for pin in savedPins {
+                if pin.latitude == latitude && pin.longitude == longitude {
+                    print(pin)
+                    return pin
+                }
+            }
+        }
+        return nil
     }
     
     func fetchPhotos(pin: Pin) {
@@ -78,7 +95,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
                     let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
                     photo.pin = pin
                     self.appDelegate.saveContext()
-                    print(photo)
+//                    print(photo)
                 }
             }
             
@@ -105,6 +122,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         VTClient.sharedInstance().pinLatitude = destinationLatitude
         VTClient.sharedInstance().pinLongitude = destinationLongitude
         
+        
         self.performSegueWithIdentifier("showImages", sender: self)
         
     }
@@ -114,8 +132,15 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showImages" {
             if let destination = segue.destinationViewController as? VTImagesViewController {
+                
+                // TODO: Pass the Pin stored in core data
+                if let destinationPin = getCoreDataPin(destinationLatitude!, longitude: destinationLongitude!) {
+                    destinationCoreDataPin = destinationPin
+                }
+
                 destination.latitude = destinationLatitude
                 destination.longitude = destinationLongitude
+                destination.coreDataPin = destinationCoreDataPin
             }
             
         }

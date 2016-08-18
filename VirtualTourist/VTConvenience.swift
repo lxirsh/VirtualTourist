@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 // MARK: VirtualTourist Convenient Resource Methods
 
@@ -82,7 +83,7 @@ extension VTClient {
                 print("Pages = \(totalPages)")
                 self.getPhotosFromFlickrByPageNumber(parameters, pageNumber: randomPage, completionHandlerForGetPhotosFromFlickrByPageNumber: { (imageData, success, errorString) in
                     if success {
-                        print("got pages")
+//                        print("got pages")
                         completionHanlerForGetPhotosByLocation(success: true, parameters: parameters, pageNumber: randomPage, errorString: nil)
                     } else {
                         completionHanlerForGetPhotosByLocation(success: false, parameters: nil, pageNumber: nil, errorString: "Could not find a page number")

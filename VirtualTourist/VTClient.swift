@@ -17,7 +17,6 @@ class VTClient: NSObject {
     // Shared session
     var session = NSURLSession.sharedSession()
     
-    
     // MARK: Initializers
     
     override init() {
@@ -30,7 +29,7 @@ class VTClient: NSObject {
         
         var parameters = parameters
         
-        print(parameters)
+//        print(parameters)
         
         // Build the URL and configure the request
         let request = NSMutableURLRequest(URL: urlFromParameters(parameters))
