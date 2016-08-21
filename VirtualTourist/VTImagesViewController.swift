@@ -20,7 +20,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     var sharedContext: NSManagedObjectContext!
     var latitude: Double!
     var longitude: Double!
-    var coreDataPin: Pin!
+    var sentPin: Pin!
     
     var selectedIndexes: [NSIndexPath]!
     var insertedIndexPaths: [NSIndexPath]!
@@ -66,7 +66,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func showPhotos() {
         
-       let pin = coreDataPin
+       let pin = sentPin
         for photo in pin.photos! {
             print(photo)
         }
@@ -105,6 +105,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VTCollectionViewCell
         
         // TODO: Configure cell?
+        self.configureCell(cell, atIndexPath: indexPath)
         
         return cell
     }
@@ -120,6 +121,20 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         // TODO: Configure cell?
+        
+    }
+    
+    // MARK: - Configure Cell
+    func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
+        
+        if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
+            let imageData = photo.image
+            cell.imageView.image = UIImage(data: imageData!)
+            print("Got an image")
+        } else {
+            print("No Image")
+            print(self.fetchedResultsController.objectAtIndexPath(indexPath))
+        }
         
     }
 
@@ -162,6 +177,10 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let fetchRequest = NSFetchRequest(entityName: "Photo")
         fetchRequest.sortDescriptors = []
+        
+        let predicate = NSPredicate(format: "pin == %@", self.sentPin)
+        
+        fetchRequest.predicate = predicate
         
         let fetchedResulstsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResulstsController.delegate = self

@@ -140,7 +140,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
 
                 destination.latitude = destinationLatitude
                 destination.longitude = destinationLongitude
-                destination.coreDataPin = destinationCoreDataPin
+                destination.sentPin = destinationCoreDataPin
             }
             
         }
