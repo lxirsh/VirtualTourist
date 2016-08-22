@@ -20,6 +20,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     var destinationCoreDataPin: Pin?
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var label: UILabel!
     
     
     override func viewDidLoad() {
