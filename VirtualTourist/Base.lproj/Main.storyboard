@@ -206,6 +206,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="J6C-6V-uPK" id="3Hl-ss-ZUb"/>
                         <outlet property="flowLayout" destination="tpT-GU-E61" id="c1v-K4-0hd"/>
                         <outlet property="mapView" destination="hmM-To-uxs" id="9vD-Gw-ieP"/>
                     </connections>
