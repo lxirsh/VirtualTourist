@@ -21,10 +21,14 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide editing label
+        self.label.alpha = 0.0
         
         mapView.delegate = self
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -106,6 +110,18 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
 
     }
     
+    @IBAction func edit(sender: UIBarButtonItem) {
+        
+        if editButton.title == "Edit" {
+            self.label.alpha = 1.0
+            editButton.title = "Done"
+
+        } else {
+            self.label.alpha = 0.0
+            editButton.title = "Edit"
+        }
+    }
+    
     // MARK: Map view delegates
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
@@ -116,15 +132,26 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         
-        let pin = view.annotation
-        destinationLatitude = pin?.coordinate.latitude
-        destinationLongitude = pin?.coordinate.longitude
+        // Move to the image vc for the selected pin
+        if self.editButton.title == "Edit" {
+            let pin = view.annotation
+            destinationLatitude = pin?.coordinate.latitude
+            destinationLongitude = pin?.coordinate.longitude
+            
+            VTClient.sharedInstance().pinLatitude = destinationLatitude
+            VTClient.sharedInstance().pinLongitude = destinationLongitude
+            
+            self.performSegueWithIdentifier("showImages", sender: self)
+            
+        // Remove the selected pin
+        } else {
+            let pin = view.annotation as! Pin
+            sharedContext.deleteObject(pin)
+            mapView.removeAnnotation(pin)
+            appDelegate.saveContext()
+        }
         
-        VTClient.sharedInstance().pinLatitude = destinationLatitude
-        VTClient.sharedInstance().pinLongitude = destinationLongitude
         
-        
-        self.performSegueWithIdentifier("showImages", sender: self)
         
     }
     
