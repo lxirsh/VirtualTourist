@@ -15,6 +15,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bottomBarButton: UIToolbar!
     
     // MARK: - Properties
     var appDelegate: AppDelegate!
@@ -23,7 +24,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     var longitude: Double!
     var sentPin: Pin!
     
-    var selectedIndexes: [NSIndexPath]!
+    var selectedIndexes = [NSIndexPath]()
+    
     var insertedIndexPaths: [NSIndexPath]!
     var deletedIndexPaths: [NSIndexPath]!
     var updatedIndexPaths: [NSIndexPath]!
@@ -63,6 +65,9 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         showPhotos()
     }
     
+    @IBAction func bottomButtonAction(sender: UIBarButtonItem) {
+        
+    }
 
     
     func showPhotos() {
@@ -111,7 +116,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! VTCollectionViewCell
         
@@ -122,19 +127,30 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         // TODO: Configure cell?
+        configureCell(cell, atIndexPath: indexPath)
         
     }
     
     // MARK: - Configure Cell
     func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         
+        
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
             let imageData = photo.image
             cell.imageView.image = UIImage(data: imageData!)
-            print("Got an image")
+//            print("Got an image")
         } else {
             print("No Image")
             print(self.fetchedResultsController.objectAtIndexPath(indexPath))
+        }
+        
+        
+        print("selectedIndexes: \(selectedIndexes)")
+        print("indexPath: \(indexPath)")
+        if let index = selectedIndexes.indexOf(indexPath) {
+            cell.alpha = 0.5
+        } else {
+            cell.alpha = 1.0
         }
         
     }

@@ -137,6 +137,9 @@ extension VTClient {
                         return
                     }
                     
+                    // TODO: Fix occasioanl Index out of range error
+                    print("photosArray: \(photosArray)")
+                    print("photosArray.count: \(photosArray.count)")
                     let randonPhotoIndex = Int(arc4random_uniform(UInt32(photosArray.count)))
                     let photoDictionary = photosArray[randonPhotoIndex] as [String: AnyObject]
                     

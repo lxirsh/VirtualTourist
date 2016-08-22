@@ -119,16 +119,38 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OR6-FO-cME">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OR6-FO-cME">
                                                     <rect key="frame" x="-95" y="-39" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="9w5-ci-fO6"/>
+                                                        <constraint firstAttribute="width" constant="240" id="RWd-Pf-uFe"/>
+                                                        <constraint firstAttribute="width" constant="240" id="TvS-Gm-VoE"/>
+                                                        <constraint firstAttribute="width" constant="240" id="t4z-0p-l9o"/>
+                                                        <constraint firstAttribute="width" constant="240" id="zXR-Nn-wHv"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="Ap7-w2-Bsx" firstAttribute="bottom" secondItem="Y48-EX-j7P" secondAttribute="bottomMargin" id="0D5-8N-gKK"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerY" secondItem="Y48-EX-j7P" secondAttribute="centerY" id="0Qx-mr-2gT"/>
                                             <constraint firstItem="Ap7-w2-Bsx" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" id="4fn-7l-0hk"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="6gm-vS-uxp"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerY" secondItem="Y48-EX-j7P" secondAttribute="centerY" id="Bqu-c8-S4T"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" constant="-47" id="EJk-0w-BnB"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="F5b-uH-rZy"/>
                                             <constraint firstItem="Ap7-w2-Bsx" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="H3j-zK-Z5C"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="V6Z-RU-niV"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="WIW-JO-7Xd"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" constant="-47" id="b5h-Yh-cB4"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerY" secondItem="Y48-EX-j7P" secondAttribute="centerY" id="dhZ-Gp-pfE"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" constant="-47" id="eMK-oE-JNn"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" constant="-47" id="eTT-9s-sHy"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="top" secondItem="Y48-EX-j7P" secondAttribute="topMargin" constant="-47" id="fBk-W8-Sfp"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerY" secondItem="Y48-EX-j7P" secondAttribute="centerY" id="ifS-0i-3sH"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerY" secondItem="Y48-EX-j7P" secondAttribute="centerY" id="t7N-ve-sp9"/>
+                                            <constraint firstItem="OR6-FO-cME" firstAttribute="centerX" secondItem="Y48-EX-j7P" secondAttribute="centerX" id="zgR-pg-g65"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
@@ -180,15 +202,30 @@
                                     <outlet property="delegate" destination="csE-Kp-aJM" id="Lap-3B-nBi"/>
                                 </connections>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vet-ka-klK">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4qf-8N-nk4"/>
+                                    <barButtonItem title="New Collection" id="t7f-KD-C0l">
+                                        <connections>
+                                            <action selector="bottomButtonAction:" destination="csE-Kp-aJM" id="F6g-6w-rLy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mSx-lz-imf"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vet-ka-klK" firstAttribute="bottom" secondItem="phH-3l-Gy6" secondAttribute="top" id="60q-96-HwK"/>
                             <constraint firstItem="hmM-To-uxs" firstAttribute="trailing" secondItem="J6C-6V-uPK" secondAttribute="trailing" id="6x9-yV-fBI"/>
                             <constraint firstItem="J6C-6V-uPK" firstAttribute="bottom" secondItem="phH-3l-Gy6" secondAttribute="top" id="7Ca-ls-mUa"/>
                             <constraint firstAttribute="trailing" secondItem="hmM-To-uxs" secondAttribute="trailing" id="BvG-dL-52P"/>
                             <constraint firstItem="hmM-To-uxs" firstAttribute="top" secondItem="jjJ-B5-vam" secondAttribute="bottom" id="IPb-qj-KVP"/>
+                            <constraint firstItem="vet-ka-klK" firstAttribute="leading" secondItem="gJO-vX-ogQ" secondAttribute="leading" id="IiH-8y-sKy"/>
                             <constraint firstItem="hmM-To-uxs" firstAttribute="leading" secondItem="J6C-6V-uPK" secondAttribute="leading" id="PgW-5m-VtN"/>
                             <constraint firstItem="hmM-To-uxs" firstAttribute="leading" secondItem="gJO-vX-ogQ" secondAttribute="leading" id="nSh-mq-JjW"/>
+                            <constraint firstAttribute="trailing" secondItem="vet-ka-klK" secondAttribute="trailing" id="xLM-nB-Q4h"/>
                             <constraint firstItem="J6C-6V-uPK" firstAttribute="top" secondItem="hmM-To-uxs" secondAttribute="bottom" constant="1" id="y8I-Ba-pxY"/>
                         </constraints>
                         <variation key="default">
@@ -223,6 +260,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomBarButton" destination="vet-ka-klK" id="Paq-QW-UYI"/>
                         <outlet property="collectionView" destination="J6C-6V-uPK" id="3Hl-ss-ZUb"/>
                         <outlet property="flowLayout" destination="tpT-GU-E61" id="c1v-K4-0hd"/>
                         <outlet property="mapView" destination="hmM-To-uxs" id="9vD-Gw-ieP"/>
