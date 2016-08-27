@@ -15,7 +15,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var bottomBarButton: UIToolbar!
+    @IBOutlet weak var bottomButton: UIBarButtonItem!
     
     // MARK: - Properties
     var appDelegate: AppDelegate!
@@ -37,6 +37,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.bottomButton.title = "New Collection"
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         sharedContext = appDelegate.managedObjectContext
@@ -64,11 +66,6 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         showLocation()
         showPhotos()
     }
-    
-    @IBAction func bottomButtonAction(sender: UIBarButtonItem) {
-        
-    }
-
     
     func showPhotos() {
         
@@ -126,7 +123,13 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             selectedIndexes.append(indexPath)
         }
         
-        // TODO: Configure cell?
+        // Toggle the title of the bottom buttom according to whether there are any images selected for deletion
+        if selectedIndexes.isEmpty {
+            bottomButton.title = "New Collection"
+        } else {
+            bottomButton.title = "Delete selected images"
+        }
+        
         configureCell(cell, atIndexPath: indexPath)
         
     }
@@ -155,28 +158,6 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
     }
 
-    // MARK: - UICollectionViewDataSource protocol
-//
-//    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return items.count
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! VTCollectionViewCell
-//        
-//        cell.myLabel.text = items[indexPath.item]
-//        cell.backgroundColor = UIColor.whiteColor()
-//        
-//        return cell
-//    }
-    
-//    // MARK: - UICollectionViewDelegate protocol
-//
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        print("You selected cell #\(indexPath.item)!")
-//    }
-    
     // MARK: - Map View
     
     // Zoom in on the selcted region
@@ -279,6 +260,36 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             }
             
             }, completion: nil)
+    }
+    
+    // Mark: - Actions and Helpers
+    
+    @IBAction func bottomButtonTapped(sender: UIBarButtonItem) {
+        
+        // TODO: Create action according to button title
+        if bottomButton.title == "New Collection" {
+            // TODO: Get a new collection
+            
+        } else {
+            deleteSelectedImages()
+            bottomButton.title = "New Collection"
+        }
+    }
+
+    
+    func deleteSelectedImages() {
+        
+        var imagesToDelete = [Photo]()
+        
+        for indexPath in selectedIndexes {
+            imagesToDelete.append(fetchedResultsController.objectAtIndexPath(indexPath) as! Photo)
+        }
+        
+        for image in imagesToDelete {
+            sharedContext.deleteObject(image)
+        }
+        
+        selectedIndexes = []
     }
 
     /*

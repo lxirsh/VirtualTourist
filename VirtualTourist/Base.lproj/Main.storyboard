@@ -209,7 +209,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4qf-8N-nk4"/>
                                     <barButtonItem title="New Collection" id="t7f-KD-C0l">
                                         <connections>
-                                            <action selector="bottomButtonAction:" destination="csE-Kp-aJM" id="F6g-6w-rLy"/>
+                                            <action selector="bottomButtonTapped:" destination="csE-Kp-aJM" id="bCv-44-ad5"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mSx-lz-imf"/>
@@ -261,7 +261,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="bottomBarButton" destination="vet-ka-klK" id="Paq-QW-UYI"/>
+                        <outlet property="bottomButton" destination="t7f-KD-C0l" id="iXF-eC-zgi"/>
                         <outlet property="collectionView" destination="J6C-6V-uPK" id="3Hl-ss-ZUb"/>
                         <outlet property="flowLayout" destination="tpT-GU-E61" id="c1v-K4-0hd"/>
                         <outlet property="mapView" destination="hmM-To-uxs" id="9vD-Gw-ieP"/>
