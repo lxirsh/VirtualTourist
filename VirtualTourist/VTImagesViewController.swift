@@ -289,6 +289,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             sharedContext.deleteObject(image)
         }
         
+        self.appDelegate.saveContext()
+        
         selectedIndexes = []
     }
 
