@@ -137,7 +137,6 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - Configure Cell
     func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         
-        
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
             let imageData = photo.image
             cell.imageView.image = UIImage(data: imageData!)

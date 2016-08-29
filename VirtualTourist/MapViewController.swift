@@ -95,13 +95,17 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         repeat {
             
             VTClient.sharedInstance().getPhotos { (imageData, success, error) in
-                if success {
-                    // TODO? change context?
-                    let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
-                    photo.pin = pin
-                    self.appDelegate.saveContext()
-//                    print(photo)
-                }
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { 
+                    if success {
+                        // TODO? change context?
+                        let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
+                        photo.pin = pin
+                        self.appDelegate.saveContext()
+                        //                    print(photo)
+                    }
+                })
+                
+
             }
             
             numberOfPhotosToFetch -= 1
