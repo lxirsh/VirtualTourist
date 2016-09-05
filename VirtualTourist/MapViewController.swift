@@ -65,7 +65,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
         let fetchRequest = NSFetchRequest(entityName: "Pin")
         do {
             let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as! [Pin]
-            print("Fetched results for 'Pin': \(fetchResults)")
+//            print("Fetched results for 'Pin': \(fetchResults)")
             return fetchResults
         } catch let error as NSError {
             print("Fetch failed: \(error.localizedDescription)")
@@ -80,7 +80,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             
             for pin in savedPins {
                 if pin.latitude == latitude && pin.longitude == longitude {
-                    print(pin)
+//                    print(pin)
                     return pin
                 }
             }
@@ -90,27 +90,46 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     
     func fetchPhotos(pin: Pin) {
         
-        var numberOfPhotosToFetch = 21
-        
-        repeat {
-            
-            VTClient.sharedInstance().getPhotos { (imageData, success, error) in
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { 
-                    if success {
-                        // TODO? change context?
-                        let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
-                        photo.pin = pin
-                        self.appDelegate.saveContext()
-                        //                    print(photo)
+            VTClient.sharedInstance().getPhotosByLocation { (success, photosURLArray, errorString) in
+                if success {
+//                    print("photosURLArray: \(photosURLArray)")
+                    print("Got a photo array")
+                    for photoURL in photosURLArray! {
+//                        print("getting an image...\(photoURL)")
+                        VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
+                            
+                            if success {
+                                let photo = Photo(image: imageData!, context: self.sharedContext)
+                                print("got photo")
+                                photo.pin = pin
+                                self.appDelegate.saveContext()
+//                                self.sharedContext.performBlockAndWait({
+//                                    photo.pin = pin
+//                                    self.appDelegate.saveContext()
+//                                })
+                            } else {
+                                print("error: \(error)")
+                            }
+                        })
                     }
-                })
-                
-
-            }
-            
-            numberOfPhotosToFetch -= 1
-        } while numberOfPhotosToFetch > 0
+                } else {
+                    print(errorString)
+                }
+        }
         
+//            VTClient.sharedInstance().getPhotos { (imageData, success, error) in
+//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { 
+//                    if success {
+//                        // TODO? change context?
+//                        let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
+//                        photo.pin = pin
+//                        self.appDelegate.saveContext()
+//                        //                    print(photo)
+//                    }
+//                })
+//                
+//
+//            }
 
     }
     

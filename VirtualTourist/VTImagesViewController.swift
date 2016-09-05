@@ -63,6 +63,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             print("Error performing initial fetch: \(error)")
         }
         
+        print(sentPin)
         showLocation()
         showPhotos()
     }
