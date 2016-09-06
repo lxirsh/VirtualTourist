@@ -83,7 +83,7 @@ extension VTClient {
                     
                     var imagesURLArray = [String]()
                     // TODO: Replace number with constant
-                    for photoIndex in 0...21 {
+                    for photoIndex in 0...20 {
                         
                         let randonPhotoIndex = Int(arc4random_uniform(UInt32(photosArray.count)))
                         let photoDictionary = photosArray[randonPhotoIndex] as [String: AnyObject]
