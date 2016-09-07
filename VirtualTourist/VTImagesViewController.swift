@@ -268,13 +268,54 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // TODO: Create action according to button title
         if bottomButton.title == "New Collection" {
-            // TODO: Get a new collection
+            
+            // Delete the current set of photos associated with the pin
+            for photo in self.sentPin.photos! {
+                sharedContext.deleteObject(photo as! NSManagedObject)
+            }
+            
+            appDelegate.saveContext()
+            // Get a new collection
+            fetchPhotos(sentPin)
+            
             
         } else {
             deleteSelectedImages()
             bottomButton.title = "New Collection"
         }
     }
+    
+    func fetchPhotos(pin: Pin) {
+        
+        VTClient.sharedInstance().getPhotosByLocation { (success, photosURLArray, errorString) in
+            if success {
+                //                    print("photosURLArray: \(photosURLArray)")
+                print("Got a photo array")
+                for photoURL in photosURLArray! {
+                    //                        print("getting an image...\(photoURL)")
+                    VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
+                        
+                        if success {
+                            let photo = Photo(image: imageData!, context: self.sharedContext)
+                            print("got photo")
+                            photo.pin = pin
+                            self.appDelegate.saveContext()
+                            //                                self.sharedContext.performBlockAndWait({
+                            //                                    photo.pin = pin
+                            //                                    self.appDelegate.saveContext()
+                            //                                })
+                        } else {
+                            print("error: \(error)")
+                        }
+                    })
+                }
+            } else {
+                print(errorString)
+            }
+        }
+        
+    }
+    
 
     
     func deleteSelectedImages() {
