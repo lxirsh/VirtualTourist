@@ -86,6 +86,8 @@ extension VTClient {
                     for photoIndex in 0...20 {
                         
                         let randonPhotoIndex = Int(arc4random_uniform(UInt32(photosArray.count)))
+                        print("photosArray.count: \(photosArray.count)")
+                        print("randonPhotoIndex: \(randonPhotoIndex)")
                         let photoDictionary = photosArray[randonPhotoIndex] as [String: AnyObject]
 //                        print("photoDictionary: \(photoDictionary)")
                         

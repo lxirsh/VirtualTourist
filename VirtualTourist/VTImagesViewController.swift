@@ -144,6 +144,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
 //            print("Got an image")
         } else {
             print("No Image")
+            cell.backgroundColor = UIColor.blueColor()
             print(self.fetchedResultsController.objectAtIndexPath(indexPath))
         }
         
@@ -287,6 +288,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func fetchPhotos(pin: Pin) {
         
+//        bottomButton.enabled = false
+        
         VTClient.sharedInstance().getPhotosByLocation { (success, photosURLArray, errorString) in
             if success {
                 //                    print("photosURLArray: \(photosURLArray)")
@@ -300,12 +303,14 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
                             print("got photo")
                             photo.pin = pin
                             self.appDelegate.saveContext()
-                            //                                self.sharedContext.performBlockAndWait({
-                            //                                    photo.pin = pin
-                            //                                    self.appDelegate.saveContext()
-                            //                                })
+//                            self.bottomButton.enabled = true
+//                            self.sharedContext.performBlockAndWait({
+//                                photo.pin = pin
+//                                self.appDelegate.saveContext()
+//                            })
                         } else {
                             print("error: \(error)")
+//                            self.bottomButton.enabled = true
                         }
                     })
                 }
@@ -313,6 +318,8 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
                 print(errorString)
             }
         }
+        
+//        bottomButton.enabled = true
         
     }
     
