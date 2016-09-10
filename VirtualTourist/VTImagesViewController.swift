@@ -290,7 +290,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
 //        bottomButton.enabled = false
         
-        VTClient.sharedInstance().getPhotosByLocation { (success, photosURLArray, errorString) in
+        VTClient.sharedInstance().getPhotosByLocation(pin) { (success, photosURLArray, errorString) in
             if success {
                 //                    print("photosURLArray: \(photosURLArray)")
                 print("Got a photo array")

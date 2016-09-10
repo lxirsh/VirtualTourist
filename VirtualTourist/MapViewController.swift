@@ -55,8 +55,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             appDelegate.saveContext()
             
             // Set the coordinates for the client. Needed in order to get photos
-            VTClient.sharedInstance().pinLatitude = newCoordinates.latitude
-            VTClient.sharedInstance().pinLongitude = newCoordinates.longitude
+//            VTClient.sharedInstance().pinLatitude = newCoordinates.latitude
+//            VTClient.sharedInstance().pinLongitude = newCoordinates.longitude
             fetchPhotos(annotation)
         }
     }
@@ -90,7 +90,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
     
     func fetchPhotos(pin: Pin) {
         
-            VTClient.sharedInstance().getPhotosByLocation { (success, photosURLArray, errorString) in
+            VTClient.sharedInstance().getPhotosByLocation(pin) { (success, photosURLArray, errorString) in
                 if success {
 //                    print("photosURLArray: \(photosURLArray)")
                     print("Got a photo array")
@@ -161,8 +161,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             destinationLatitude = pin?.coordinate.latitude
             destinationLongitude = pin?.coordinate.longitude
             
-            VTClient.sharedInstance().pinLatitude = destinationLatitude
-            VTClient.sharedInstance().pinLongitude = destinationLongitude
+//            VTClient.sharedInstance().pinLatitude = destinationLatitude
+//            VTClient.sharedInstance().pinLongitude = destinationLongitude
             
             self.performSegueWithIdentifier("showImages", sender: self)
             

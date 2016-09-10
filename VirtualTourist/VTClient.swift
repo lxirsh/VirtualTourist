@@ -11,8 +11,8 @@ import Foundation
 class VTClient: NSObject {
     
     // Mark: Properties
-    var pinLatitude: Double? = nil
-    var pinLongitude: Double? = nil
+//    var pinLatitude: Double? = nil
+//    var pinLongitude: Double? = nil
     
     // Shared session
     var session = NSURLSession.sharedSession()
@@ -74,10 +74,10 @@ class VTClient: NSObject {
     // MARK: Helpers
     
     // Define a bounding box for the location search
-    func creatBoundingBoxString() -> String {
+    func creatBoundingBoxString(latitude: Double, longitude: Double) -> String {
         
-        let latitude = pinLatitude!
-        let longitude = pinLongitude!
+//        let latitude = pinLatitude!
+//        let longitude = pinLongitude!
         
         // Ensure box is bounded by minimums and maximums
         let bottomLeftLongitude = max(longitude - VTClient.BBoxConstants.BoundingBoxHalfWidth, VTClient.BBoxConstants.LongitudeMinimum)

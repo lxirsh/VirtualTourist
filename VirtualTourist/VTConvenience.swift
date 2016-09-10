@@ -34,13 +34,13 @@ extension VTClient {
 //        
 //    }
     
-    func getPhotosByLocation(completionHanlerForGetPhotosByLocation: (success: Bool, photosURLArray: [String]?, errorString: String?) -> Void) {
+    func getPhotosByLocation(pin: Pin, completionHanlerForGetPhotosByLocation: (success: Bool, photosURLArray: [String]?, errorString: String?) -> Void) {
         
         let parameters = [
             VTClient.ParameterKeys.Method: VTClient.ParameterValues.MethodName,
             VTClient.ParameterKeys.ApiKey: VTClient.ParameterValues.ApiKey,
             VTClient.ParameterKeys.SafeSearch: VTClient.ParameterValues.SafeSearch,
-            VTClient.ParameterKeys.BBox: creatBoundingBoxString(),
+            VTClient.ParameterKeys.BBox: creatBoundingBoxString(pin.latitude as! Double, longitude: pin.longitude as! Double),
             VTClient.ParameterKeys.Extras: VTClient.ParameterValues.Extras,
             VTClient.ParameterKeys.Format: VTClient.ParameterValues.DataFormat,
             VTClient.ParameterKeys.NoJsonCallBack: VTClient.ParameterValues.NoJsonCallBack
