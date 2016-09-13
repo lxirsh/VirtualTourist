@@ -137,15 +137,17 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // MARK: - Configure Cell
     func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
-        
+                
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
             if let imageData = photo.image {
-//                cell.backgroundColor = UIColor.whiteColor()
+                cell.activityIndicator.stopAnimating()
                 cell.imageView.image = UIImage(data: imageData)
             } else {
-                print("No Image")
-//                cell.backgroundColor = UIColor.blueColor()
                 cell.imageView.image = UIImage(named: "Placeholder")
+                cell.activityIndicator.startAnimating()
+//                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+//                activityIndicator.frame = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
+//                activityIndicator.startAnimating()
                 print(self.fetchedResultsController.objectAtIndexPath(indexPath))
 
             }

@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="442"/>
+            <point key="canvasLocation" x="1475" y="454"/>
         </scene>
         <!--Images View Controller-->
         <scene sceneID="J3Q-Bd-z41">
@@ -129,6 +129,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrM-jT-Mam">
                                                     <rect key="frame" x="3" y="3" width="44" height="44"/>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="d7Q-UY-v3U">
+                                                    <rect key="frame" x="7" y="6" width="37" height="37"/>
+                                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -136,9 +140,14 @@
                                             <constraint firstItem="jrM-jT-Mam" firstAttribute="leading" secondItem="cGM-Qy-CkP" secondAttribute="leadingMargin" constant="-5" id="Cm8-5Z-YvW"/>
                                             <constraint firstItem="jrM-jT-Mam" firstAttribute="top" secondItem="cGM-Qy-CkP" secondAttribute="topMargin" constant="-5" id="IWn-f6-PCE"/>
                                             <constraint firstItem="jrM-jT-Mam" firstAttribute="trailing" secondItem="cGM-Qy-CkP" secondAttribute="trailingMargin" constant="5" id="PDD-5b-AVJ"/>
+                                            <constraint firstItem="d7Q-UY-v3U" firstAttribute="top" secondItem="cGM-Qy-CkP" secondAttribute="topMargin" constant="-5" id="bEa-1v-iLp"/>
                                             <constraint firstItem="jrM-jT-Mam" firstAttribute="bottom" secondItem="cGM-Qy-CkP" secondAttribute="bottomMargin" constant="5" id="bZq-bq-u2Q"/>
+                                            <constraint firstItem="d7Q-UY-v3U" firstAttribute="leading" secondItem="cGM-Qy-CkP" secondAttribute="leadingMargin" constant="-5" id="iSV-bD-BFU"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="d7Q-UY-v3U" secondAttribute="bottom" constant="-5" id="kKo-eR-hO4"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="d7Q-UY-v3U" secondAttribute="trailing" constant="-5" id="ltE-cL-gee"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="d7Q-UY-v3U" id="XKG-ZZ-HxX"/>
                                             <outlet property="imageView" destination="jrM-jT-Mam" id="NKP-k6-MRX"/>
                                         </connections>
                                     </collectionViewCell>
@@ -179,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4m-xz-lb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="442"/>
+            <point key="canvasLocation" x="2183" y="448"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2I8-7T-sSo">
