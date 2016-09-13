@@ -25,10 +25,10 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="23Y-6D-daw"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Pins To Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-qX-XoC">
-                                <rect key="frame" x="0.0" y="546" width="600" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap Pins To Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-qX-XoC">
+                                <rect key="frame" x="0.0" y="564" width="600" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -40,7 +40,6 @@
                             <constraint firstItem="h7N-qX-XoC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="AfR-zs-KO8"/>
                             <constraint firstItem="h7N-qX-XoC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fa8-dk-DLG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EUo-bk-xj1" secondAttribute="bottom" id="XcC-S6-10o"/>
-                            <constraint firstItem="h7N-qX-XoC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="482" id="bsa-2S-8wX"/>
                             <constraint firstAttribute="trailing" secondItem="h7N-qX-XoC" secondAttribute="trailing" id="esp-qF-BDn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EUo-bk-xj1" secondAttribute="trailing" constant="-20" id="fe3-l9-13k"/>
                         </constraints>
@@ -49,10 +48,10 @@
                                 <exclude reference="EUo-bk-xj1"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="XcC-S6-10o"/>
                                 <exclude reference="9Y1-2z-jhg"/>
                                 <exclude reference="AbX-uH-u4R"/>
                                 <exclude reference="fe3-l9-13k"/>
+                                <exclude reference="XcC-S6-10o"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -60,10 +59,10 @@
                                 <include reference="EUo-bk-xj1"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="XcC-S6-10o"/>
                                 <include reference="9Y1-2z-jhg"/>
                                 <include reference="AbX-uH-u4R"/>
                                 <include reference="fe3-l9-13k"/>
+                                <include reference="XcC-S6-10o"/>
                             </mask>
                         </variation>
                     </view>
