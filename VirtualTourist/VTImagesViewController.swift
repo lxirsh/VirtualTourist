@@ -137,7 +137,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     // MARK: - Configure Cell
     func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
-                
+        
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
             if let imageData = photo.image {
                 cell.activityIndicator.stopAnimating()
@@ -145,13 +145,9 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             } else {
                 cell.imageView.image = UIImage(named: "Placeholder")
                 cell.activityIndicator.startAnimating()
-//                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-//                activityIndicator.frame = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
-//                activityIndicator.startAnimating()
                 print(self.fetchedResultsController.objectAtIndexPath(indexPath))
 
             }
-//            print("Got an image")
         } else {
             print("Huh?")
         }
@@ -176,6 +172,9 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+        let annotation = Pin(lattitude: sentPin.latitude as! Double, longitude: sentPin.longitude as! Double, context: appDelegate.managedObjectContext)
+
+        mapView.addAnnotation(annotation)
     }
     
     // MARK: - NSFetchedResultsController
