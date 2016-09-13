@@ -127,16 +127,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrM-jT-Mam">
-                                                    <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                                    <rect key="frame" x="3" y="3" width="44" height="44"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="leading" secondItem="cGM-Qy-CkP" secondAttribute="leadingMargin" id="42O-55-UFZ"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="jrM-jT-Mam" secondAttribute="trailing" id="6iI-0x-W2k"/>
-                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="top" secondItem="cGM-Qy-CkP" secondAttribute="topMargin" id="8Bp-nK-xa6"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="jrM-jT-Mam" secondAttribute="bottom" id="uLN-1X-6pE"/>
+                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="leading" secondItem="cGM-Qy-CkP" secondAttribute="leadingMargin" constant="-5" id="Cm8-5Z-YvW"/>
+                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="top" secondItem="cGM-Qy-CkP" secondAttribute="topMargin" constant="-5" id="IWn-f6-PCE"/>
+                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="trailing" secondItem="cGM-Qy-CkP" secondAttribute="trailingMargin" constant="5" id="PDD-5b-AVJ"/>
+                                            <constraint firstItem="jrM-jT-Mam" firstAttribute="bottom" secondItem="cGM-Qy-CkP" secondAttribute="bottomMargin" constant="5" id="bZq-bq-u2Q"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="jrM-jT-Mam" id="NKP-k6-MRX"/>
