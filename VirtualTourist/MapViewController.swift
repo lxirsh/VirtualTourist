@@ -96,41 +96,61 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
                     print("Got a photo array")
                     for photoURL in photosURLArray! {
 //                        print("getting an image...\(photoURL)")
-                        VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
-                            
-                            if success {
-                                let photo = Photo(image: imageData!, context: self.sharedContext)
-                                print("got photo")
-                                photo.pin = pin
-                                self.appDelegate.saveContext()
-//                                self.sharedContext.performBlockAndWait({
-//                                    photo.pin = pin
-//                                    self.appDelegate.saveContext()
-//                                })
-                            } else {
-                                print("error: \(error)")
-                            }
+                        
+                        // First creat a Photo entity without an image
+                        var imageData: NSData?
+                        imageData = nil
+                        self.sharedContext.performBlockAndWait({
+                            let photo = Photo(image: imageData, context: self.sharedContext)
+                            photo.pin = pin
+                            self.appDelegate.saveContext()
                         })
+                        
                     }
+                    
+                    self.setImageForPhotos(pin, photosURLArray: photosURLArray!)
+                    
                 } else {
                     print(errorString)
                 }
         }
         
-//            VTClient.sharedInstance().getPhotos { (imageData, success, error) in
-//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { 
-//                    if success {
-//                        // TODO? change context?
-//                        let photo = Photo(image: imageData!, context: self.appDelegate.managedObjectContext)
-//                        photo.pin = pin
-//                        self.appDelegate.saveContext()
-//                        //                    print(photo)
-//                    }
-//                })
-//                
-//
-//            }
+        
+    }
+    
+    func setImageForPhotos(pin: Pin, photosURLArray: [String]) {
+        
+        var localPhotosURLArray = photosURLArray
+        
+        // Set the image for each photo of the pin
+        self.sharedContext.performBlock({
+            
+            for photo in pin.photos! {
+                
+                let photoURL = localPhotosURLArray.popLast()
+                self.getImageForPhoto(photoURL!, photo: photo as! Photo, pin: pin)
+                
+            }
+        })
+    }
+    
+    func getImageForPhoto(photoURL: String, photo: Photo, pin: Pin) {
+        
+        VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
+            
+            if success {
+                // update photo and save
+                self.sharedContext.performBlock({
+                    photo.image = imageData
+                    print("got photo")
+                    photo.pin = pin
+                    self.appDelegate.saveContext()
 
+                })
+            } else {
+                print("error: \(error)")
+            }
+        })
     }
     
     @IBAction func edit(sender: UIBarButtonItem) {

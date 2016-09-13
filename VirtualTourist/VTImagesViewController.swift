@@ -139,13 +139,18 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     func configureCell(cell: VTCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
-            let imageData = photo.image
-            cell.imageView.image = UIImage(data: imageData!)
+            if let imageData = photo.image {
+                cell.backgroundColor = UIColor.whiteColor()
+                cell.imageView.image = UIImage(data: imageData)
+            } else {
+                print("No Image")
+                cell.backgroundColor = UIColor.blueColor()
+                print(self.fetchedResultsController.objectAtIndexPath(indexPath))
+
+            }
 //            print("Got an image")
         } else {
-            print("No Image")
-            cell.backgroundColor = UIColor.blueColor()
-            print(self.fetchedResultsController.objectAtIndexPath(indexPath))
+            print("Huh?")
         }
         
         
@@ -263,11 +268,11 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             }, completion: nil)
     }
     
-    // Mark: - Actions and Helpers
+    // MARK: - Actions and Helpers
+
     
     @IBAction func bottomButtonTapped(sender: UIBarButtonItem) {
         
-        // TODO: Create action according to button title
         if bottomButton.title == "New Collection" {
             
             // Delete the current set of photos associated with the pin
@@ -288,40 +293,69 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func fetchPhotos(pin: Pin) {
         
-//        bottomButton.enabled = false
-        
         VTClient.sharedInstance().getPhotosByLocation(pin) { (success, photosURLArray, errorString) in
             if success {
                 //                    print("photosURLArray: \(photosURLArray)")
                 print("Got a photo array")
                 for photoURL in photosURLArray! {
                     //                        print("getting an image...\(photoURL)")
-                    VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
-                        
-                        if success {
-                            let photo = Photo(image: imageData!, context: self.sharedContext)
-                            print("got photo")
-                            photo.pin = pin
-                            self.appDelegate.saveContext()
-//                            self.bottomButton.enabled = true
-//                            self.sharedContext.performBlockAndWait({
-//                                photo.pin = pin
-//                                self.appDelegate.saveContext()
-//                            })
-                        } else {
-                            print("error: \(error)")
-//                            self.bottomButton.enabled = true
-                        }
+                    
+                    // First creat a Photo entity without an image
+                    var imageData: NSData?
+                    imageData = nil
+                    self.sharedContext.performBlockAndWait({
+                        let photo = Photo(image: imageData, context: self.sharedContext)
+                        photo.pin = pin
+                        self.appDelegate.saveContext()
                     })
+                    
                 }
+                
+                self.setImageForPhotos(pin, photosURLArray: photosURLArray!)
+                
             } else {
                 print(errorString)
             }
         }
         
-//        bottomButton.enabled = true
         
     }
+    
+    func setImageForPhotos(pin: Pin, photosURLArray: [String]) {
+        
+        var localPhotosURLArray = photosURLArray
+        
+        // Set the image for each photo of the pin
+        self.sharedContext.performBlock({
+            
+            for photo in pin.photos! {
+                
+                let photoURL = localPhotosURLArray.popLast()
+                self.getImageForPhoto(photoURL!, photo: photo as! Photo, pin: pin)
+                
+            }
+        })
+    }
+    
+    func getImageForPhoto(photoURL: String, photo: Photo, pin: Pin) {
+        
+        VTClient.sharedInstance().getImageForURL(photoURL, completionHandler: { (success, imageData, error) in
+            
+            if success {
+                // update photo and save
+                self.sharedContext.performBlock({
+                    photo.image = imageData
+                    print("got photo")
+                    photo.pin = pin
+                    self.appDelegate.saveContext()
+                    
+                })
+            } else {
+                print("error: \(error)")
+            }
+        })
+    }
+
     
 
     

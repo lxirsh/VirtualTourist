@@ -31,7 +31,27 @@ extension VTClient {
 //            }
 //        
 //
+//
+//    }
+    
+//    func getPhotos(pin: Pin, completionHandler: (success: Bool, error: String?) -> Void) {
 //        
+//        getPhotosByLocation(pin) { (success, photosURLArray, errorString) in
+//            
+//            if success {
+//                
+//                var image: NSData?
+//                
+//                for url in photosURLArray! {
+//                    
+//                    image = nil
+//                    let photo = Photo(image: image!, context: nil)
+//                    
+//                    
+//                }
+//            }
+//        }
+//
 //    }
     
     func getPhotosByLocation(pin: Pin, completionHanlerForGetPhotosByLocation: (success: Bool, photosURLArray: [String]?, errorString: String?) -> Void) {
@@ -81,7 +101,7 @@ extension VTClient {
                         return
                     }
                     
-                    var imagesURLArray = [String]()
+                    var photosURLArray = [String]()
                     // TODO: Replace number with constant
                     for photoIndex in 0...20 {
                         
@@ -94,11 +114,11 @@ extension VTClient {
                         let imageURLString = photoDictionary["url_m"] as? String
 //                        print(imageURLString)
                         if imageURLString != nil {
-                            imagesURLArray.append(imageURLString!)
+                            photosURLArray.append(imageURLString!)
                         }
 
                     }
-                        completionHanlerForGetPhotosByLocation(success: true, photosURLArray: imagesURLArray, errorString: nil)
+                        completionHanlerForGetPhotosByLocation(success: true, photosURLArray: photosURLArray, errorString: nil)
 
 
                     

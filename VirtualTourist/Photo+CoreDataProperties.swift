@@ -15,7 +15,7 @@ import CoreData
 extension Photo {
 
     @NSManaged var image: NSData?
-    // regenerate files. should be of type Pin
+    // TODO: regenerate files? should be of type Pin?
     @NSManaged var pin: NSManagedObject?
 
 }
