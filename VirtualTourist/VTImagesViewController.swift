@@ -140,11 +140,12 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if let photo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Photo {
             if let imageData = photo.image {
-                cell.backgroundColor = UIColor.whiteColor()
+//                cell.backgroundColor = UIColor.whiteColor()
                 cell.imageView.image = UIImage(data: imageData)
             } else {
                 print("No Image")
-                cell.backgroundColor = UIColor.blueColor()
+//                cell.backgroundColor = UIColor.blueColor()
+                cell.imageView.image = UIImage(named: "Placeholder")
                 print(self.fetchedResultsController.objectAtIndexPath(indexPath))
 
             }
