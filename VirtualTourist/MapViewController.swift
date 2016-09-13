@@ -5,6 +5,8 @@
 //  Created by Lance Hirsch on 7/3/16.
 //  Copyright © 2016 Lance Hirsch. All rights reserved.
 //
+//  I made use of the information on http://juliusdanek.de/blog/coding/2015/07/14/persistent-pins-tutorial/ to help set-up core data with the map view
+//
 
 import UIKit
 import MapKit
