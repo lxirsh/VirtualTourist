@@ -63,29 +63,7 @@ class VTImagesViewController: UIViewController, UICollectionViewDataSource, UICo
             print("Error performing initial fetch: \(error)")
         }
         
-        print(sentPin)
         showLocation()
-        showPhotos()
-    }
-    
-    func showPhotos() {
-        
-       let pin = sentPin
-        for photo in pin.photos! {
-            print(photo)
-        }
-//        
-//        VTClient.sharedInstance().getPhotos { (imageData, success, errorString) in
-//            
-//            dispatch_async(dispatch_get_main_queue(), { 
-//                if success {
-//                    print("success")
-//                } else {
-//                    print(errorString)
-//                }
-//            })
-//            
-//        }
     }
     
     // MARK: - UICollectionView

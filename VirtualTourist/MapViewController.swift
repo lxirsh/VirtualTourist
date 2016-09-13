@@ -54,14 +54,12 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             mapView.addAnnotation(annotation)
             appDelegate.saveContext()
             
-            // Set the coordinates for the client. Needed in order to get photos
-//            VTClient.sharedInstance().pinLatitude = newCoordinates.latitude
-//            VTClient.sharedInstance().pinLongitude = newCoordinates.longitude
             fetchPhotos(annotation)
         }
     }
     
     func fetchAnnotations() -> [Pin]? {
+        
         let fetchRequest = NSFetchRequest(entityName: "Pin")
         do {
             let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as! [Pin]
@@ -181,17 +179,17 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, MKMapVie
             destinationLatitude = pin?.coordinate.latitude
             destinationLongitude = pin?.coordinate.longitude
             
-//            VTClient.sharedInstance().pinLatitude = destinationLatitude
-//            VTClient.sharedInstance().pinLongitude = destinationLongitude
-            
             self.performSegueWithIdentifier("showImages", sender: self)
             
         // Remove the selected pin
         } else {
             let pin = view.annotation as! Pin
-            sharedContext.deleteObject(pin)
             mapView.removeAnnotation(pin)
-            appDelegate.saveContext()
+            
+            sharedContext.performBlockAndWait({ 
+                self.sharedContext.deleteObject(pin)
+                self.appDelegate.saveContext()
+            })
         }
         
         
